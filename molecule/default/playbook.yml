@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+  roles:
+    - role: git-repo
+      vars:
+        repo_path: /var/local/repos/repo_name
+        hooks:
+          post-update: true
+          update: true

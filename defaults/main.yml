@@ -1,0 +1,5 @@
+---
+repo_path: /var/local/repos/repo_name
+hooks:
+  post-update: false
+  update: false
