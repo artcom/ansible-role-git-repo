@@ -1,2 +1,2 @@
 ---
-# vars file for git-repo
+git_repo_path: "{{ git_repo_directory }}/{{ git_repo_name }}"

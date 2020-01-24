@@ -25,7 +25,6 @@ def test_repo_folder(host):
 def test_post_update_hook(host):
     post_update = host.file('/var/local/repos/repo_name/hooks/post-update')
 
-    assert post_update.exists
     assert post_update.is_symlink
     assert post_update.linked_to == '/usr/local/bin/configuration-change-hook'
     assert post_update.user == 'www-data'
@@ -35,7 +34,6 @@ def test_post_update_hook(host):
 def test_update_hook(host):
     update = host.file('/var/local/repos/repo_name/hooks/update')
 
-    assert update.exists
     assert update.is_symlink
     assert update.linked_to == '/usr/local/bin/validation-hook'
     assert update.user == 'www-data'

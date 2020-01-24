@@ -7,7 +7,10 @@ None.
 ## Role Variables
 Available variables are listed below, along with default values `(see defaults/main.yml)`:
 ```yaml
-
+git_repo_directory: /var/local/repos
+git_repo_name: repo_name
+git_repo_post_update_hook: false
+git_repo_update_hook: false
 ```
 
 ## Dependencies
@@ -21,10 +24,10 @@ None.
   roles:
     - role: git-repo
       vars:
-        repo_path: /var/local/repos/repo_name
-        hooks:
-          post-update: true
-          update: true
+        git_repo_directory: /var/local/repos
+        git_repo_name: repo_name
+        git_repo_post_update_hook: true
+        git_repo_update_hook: true
 ```
 
 ## Test

@@ -1,2 +1,3 @@
 ---
-# handlers file for git-repo
+- name: restart git server
+  command: dokku ps:restart git removes=/home/dokku/git

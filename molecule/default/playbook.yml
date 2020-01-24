@@ -5,7 +5,7 @@
   roles:
     - role: git-repo
       vars:
-        repo_path: /var/local/repos/repo_name
-        hooks:
-          post-update: true
-          update: true
+        git_repo_directory: /var/local/repos
+        git_repo_name: repo_name
+        git_repo_post_update_hook: true
+        git_repo_update_hook: true

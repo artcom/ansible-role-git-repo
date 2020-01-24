@@ -1,2 +1,34 @@
 ---
-# tasks file for git-repo
+- name: Install git
+  apt:
+    name: git
+    cache_valid_time: 3600
+
+- name: Initialize repo
+  command: git init --bare {{ git_repo_path }} creates={{ git_repo_path }} # noqa 303
+
+- name: Configure post-update hook
+  file:
+    path: "{{ git_repo_path }}/hooks/post-update"
+    state: link
+    src: /usr/local/bin/configuration-change-hook
+    force: true
+  when: git_repo_post_update_hook | bool
+
+- name: Configure update hook
+  file:
+    path: "{{ git_repo_path }}/hooks/update"
+    state: link
+    src: /usr/local/bin/validation-hook
+    force: true
+  when: git_repo_update_hook | bool
+
+- name: Adjust permissions
+  file:
+    path: "{{ git_repo_directory }}"
+    state: directory
+    owner: www-data
+    group: www-data
+    recurse: yes
+  notify:
+    - restart git server

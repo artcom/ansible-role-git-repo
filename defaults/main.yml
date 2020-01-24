@@ -1,5 +1,5 @@
 ---
-repo_path: /var/local/repos/repo_name
-hooks:
-  post-update: false
-  update: false
+git_repo_directory: /var/local/repos
+git_repo_name: repo_name
+git_repo_post_update_hook: false
+git_repo_update_hook: false
