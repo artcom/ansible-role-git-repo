@@ -28,8 +28,8 @@ def test_post_update_hook(host):
     assert post_update.exists
     assert post_update.is_symlink
     assert post_update.linked_to == '/usr/local/bin/configuration-change-hook'
-    assert post_update.user = 'www-data'
-    assert post_update.group = 'www-data'
+    assert post_update.user == 'www-data'
+    assert post_update.group == 'www-data'
 
 
 def test_update_hook(host):
@@ -38,5 +38,5 @@ def test_update_hook(host):
     assert update.exists
     assert update.is_symlink
     assert update.linked_to == '/usr/local/bin/validation-hook'
-    assert update.user = 'www-data'
-    assert update.group = 'www-data'
+    assert update.user == 'www-data'
+    assert update.group == 'www-data'
