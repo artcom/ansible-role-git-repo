@@ -37,6 +37,7 @@ None.
         git_repo_name: repo_name
         git_repo_post_update_hook: true
         git_repo_update_hook: true
+        git_server_restart_command: "systemctl restart git-server"
 ```
 
 ## Test
