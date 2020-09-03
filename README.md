@@ -35,8 +35,8 @@ None.
       vars:
         git_repo_directory: /var/local/repos
         git_repo_name: repo_name
-        git_repo_post_update_hook: true
-        git_repo_update_hook: true
+        git_repo_post_update_hook: /usr/local/bin/post-update-hook
+        git_repo_update_hook: /usr/local/bin/update-hook
         git_server_restart_command: "systemctl restart git-server"
 ```
 
