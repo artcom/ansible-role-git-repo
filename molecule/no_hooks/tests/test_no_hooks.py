@@ -25,16 +25,10 @@ def test_repo_folder(host):
 def test_post_update_hook(host):
     post_update = host.file('/var/local/repos/repo_name/hooks/post-update')
 
-    assert post_update.is_symlink
-    assert post_update.linked_to == '/usr/local/bin/post-update-hook'
-    assert post_update.user == 'root'
-    assert post_update.group == 'root'
+    assert not post_update.exists
 
 
 def test_update_hook(host):
     update = host.file('/var/local/repos/repo_name/hooks/update')
 
-    assert update.is_symlink
-    assert update.linked_to == '/usr/local/bin/update-hook'
-    assert update.user == 'root'
-    assert update.group == 'root'
+    assert not update.exists

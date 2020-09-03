@@ -1,3 +1,5 @@
 ---
 - name: restart git server
-  command: dokku ps:restart git removes=/home/dokku/git
+  command: "{{ git_server_restart_command }}"
+  args:
+    executable: /bin/bash

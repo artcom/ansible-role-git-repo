@@ -1,34 +1,44 @@
 ---
+- name: check mandatory variables
+  fail:
+    msg: 'variable {{ mandatory_var.key }} not defined'
+  when: not mandatory_var.value
+  loop: "{{ mandatory_vars | dict2items }}"
+  loop_control:
+    loop_var: mandatory_var
+
 - name: Install git
   apt:
     name: git
     cache_valid_time: 3600
 
 - name: Initialize repo
-  command: git init --bare {{ git_repo_path }} creates={{ git_repo_path }} # noqa 303
+  command: git init --bare {{ git_repo_path }}  # noqa 303
+  args:
+    creates: "{{ git_repo_path }}"
 
 - name: Configure post-update hook
   file:
     path: "{{ git_repo_path }}/hooks/post-update"
     state: link
-    src: /usr/local/bin/configuration-change-hook
+    src: "{{ git_repo_post_update_hook }}"
     force: true
-  when: git_repo_post_update_hook | bool
+  when: git_repo_post_update_hook != None
 
 - name: Configure update hook
   file:
     path: "{{ git_repo_path }}/hooks/update"
     state: link
-    src: /usr/local/bin/validation-hook
+    src: "{{ git_repo_update_hook }}"
     force: true
-  when: git_repo_update_hook | bool
+  when: git_repo_update_hook != None
 
 - name: Adjust permissions
   file:
     path: "{{ git_repo_directory }}"
     state: directory
-    owner: www-data
-    group: www-data
+    owner: "{{ git_repo_owner }}"
+    group: "{{ git_repo_group }}"
     recurse: yes
   notify:
     - restart git server

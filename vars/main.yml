@@ -1,2 +1,6 @@
 ---
+mandatory_vars:
+  git_repo_directory: "{{ git_repo_directory }}"
+  git_repo_name: "{{ git_repo_name }}"
+  git_server_restart_command: "{{ git_server_restart_command }}"
 git_repo_path: "{{ git_repo_directory }}/{{ git_repo_name }}"

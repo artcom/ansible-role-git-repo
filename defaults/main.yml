@@ -1,5 +1,8 @@
 ---
-git_repo_directory: /var/local/repos
-git_repo_name: repo_name
-git_repo_post_update_hook: false
-git_repo_update_hook: false
+git_repo_directory: null
+git_repo_name: null
+git_repo_owner: root
+git_repo_group: root
+git_repo_post_update_hook: null
+git_repo_update_hook: null
+git_server_restart_command: null
