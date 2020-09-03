@@ -1,5 +1,5 @@
 ---
 - name: restart git server
-  command: "{{ git_server_restart_command }}"
+  shell: "{{ git_server_restart_command }}"  # noqa 305
   args:
     executable: /bin/bash
