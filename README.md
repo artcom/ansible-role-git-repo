@@ -15,7 +15,7 @@ git_repo_post_update_hook: null
 git_repo_update_hook: null
 git_server_restart_command: null
 ```
-Mandatory variables (role will fail if the variables are not set):
+Required variables (role will fail if the variables are not set):
 ```yaml
 git_repo_directory: "string"
 git_repo_name: "string"
